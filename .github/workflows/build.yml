@@ -23,7 +23,7 @@ jobs:
         run: msbuild src/d3d12_proxy.vcxproj /p:Configuration=Release /p:Platform=x64
 
       - name: Upload DLL artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: d3d12-proxy-dll
           path: |
