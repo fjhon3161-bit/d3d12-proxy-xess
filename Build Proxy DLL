@@ -1,0 +1,24 @@
+.github/workflows/build.yml
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Setup Visual Studio
+      uses: seanmiddleditch/gha-setup-vsdevenv@v1
+
+    - name: Build DLL
+      run: msbuild src/d3d12_proxy.vcxproj /p:Configuration=Release /p:Platform=x64 /p:PlatformToolset=v143
+
+
